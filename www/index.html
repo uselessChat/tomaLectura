@@ -35,7 +35,7 @@
 				destinationType	= navigator.camera.DestinationType;
 				if(destinationType)("Carga de destinationType ");else(alert("No esta cargado destinationType");)
 				window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
-				$.mobile.changePage($('#menu'));
+				//$.mobile.changePage($('#menu'));
 			}
         </script>
         <title>Toma de Lecturas</title>
@@ -55,7 +55,7 @@
             </div>
             <div data-role="content">
                 <ul data-role="listview" ><!--data-inset="true"-->
-                    <li><a href="javascript:onDeviceReady();">Entrar</a></li>
+                    <li><a onclick="javascript:onDeviceReady();" href="#">Entrar</a></li>
                 </ul>
             </div>
             <div data-role="footer" data-position="fixed">
