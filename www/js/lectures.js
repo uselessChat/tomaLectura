@@ -17,9 +17,9 @@ var fileApi = {
 		onloadend: function(evt){alert('Operation complete Result: '+evt.target.result);},					//Read
 		onwritestart : function(evt){ alert('Starting the writing');},										//Write
 		onwrite : function(evt){alert('Write Success');},													//Write
-		onwriteend : function(evt){alert('Operation complete ')},											//Write
+		onwriteend : function(evt){alert('Operation complete ');},											//Write
 		set xml(x){this.x = x;},
-		get xml(){return this.x}
+		get xml(){return this.x;}
 	};
 	
     /*function onDeviceReady() {
@@ -67,7 +67,7 @@ var fileApi = {
 	}
 	
 	//Called when the download was complete
-	var fileTransferError = function (entry) {
+	var fileDownloadComplete = function (entry) {
 		alert("download complete: " + entry.fullPath);
 	};
 	
