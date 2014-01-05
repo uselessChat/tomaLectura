@@ -58,8 +58,8 @@ var fileApi = {
 					alert("upload error code" + error.code);
 				}    
 			);*/
-		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
-			fileApi.transferOptions.fileURI+'/'+fileApi.fileName);//,fileDownloadComplete,fileTransferError );
+		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName);
+			alert(fileApi.transferOptions.fileURI+'/'+fileApi.fileName);//,fileDownloadComplete,fileTransferError );
 		//fileApi.ft.download(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
 			//fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
 			//"file:///sdcard/image.jpg",fileDownloadComplete,fileTransferError   
