@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.lecture.tomaLectura" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="www.phonegap.test" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap = "http://phonegap.com/ns/1.0">
     <name>tomaLEctura</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Toma de Ectura
     </description>
     <author email="dev@callback.apache.org" href="http://cordova.io">
         Apache Cordova Team
@@ -11,4 +11,16 @@
     <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
+	
+	<preference name="phonegap-version" value="3.1.0" />
+	<gap:plugin name="org.apache.cordova.core.camera" />
+	<gap:plugin name="org.apache.cordova.core.geolocation" />
+	<gap:plugin name="org.apache.cordova.core.dialogs" />
+	<gap:plugin name="org.apache.cordova.battery-status"/>
+	<gap:plugin name="org.apache.cordova.device"/>
+	<gap:plugin name="org.apache.cordova.file"/>
+	<gap:plugin name="org.apache.cordova.file-transfer"/>
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
+	<gap:plugin name="org.apache.cordova.vibration"/>
 </widget>
