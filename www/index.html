@@ -30,6 +30,11 @@
 					alert("Si esta soportado navigator.geolocation");
 				}
 				//navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError,{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+				pictureSource	= navigator.camera.PictureSourceType;
+				if(pictureSource)alert("Carga de pictureSource");
+				destinationType	= navigator.camera.DestinationType;
+				if(destinationType)("Carga de destinationType ");
+				window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
 			}
         </script>
         <title>Toma de Lecturas</title>
