@@ -1,5 +1,5 @@
 var fileApi = {
-		ft : new FileTransfer(),
+		//ft : new FileTransfer(),
 		fileName : 'lectures.xml',		//File name by the user to be read/write
 		transferOptions : {
 			//get fileURI(){return fileApi.fileSystem.root.fullPath;}, 
@@ -65,15 +65,3 @@ var fileApi = {
 			//fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
 			//"file:///sdcard/image.jpg",fileDownloadComplete,fileTransferError   
 	}
-	
-	//Called when the download was complete
-	var fileDownloadComplete = function (entry) {
-		alert("download complete: " + entry.fullPath);
-	};
-	
-	//Called when tha transfer was a failure
-	var fileTransferError = function (error) {
-		alert("An error has occurred: Code = " + error.code + 'Description: '+fileTransferErrorCodes[error.code]);
-		alert("upload error source " + error.source);
-		alert("upload error target " + error.target);
-	};
