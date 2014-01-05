@@ -244,7 +244,7 @@
 	}
 	
 	//Called when the download was complete
-	var fileTransferError = function (entry) {
+	var fileDownloadComplete = function (entry) {
 		alert("download complete: " + entry.fullPath);
 	};
 	
