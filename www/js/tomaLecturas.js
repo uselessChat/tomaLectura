@@ -655,7 +655,7 @@ var clearCache = {
 		$('#' + imageTagDom.date).val('');
 	}
 };
-var xmlFile = 
+var xmlFile = '';/*
 "<root>"+
 "<Routes id='root'>"+
     "<route id='rou001'>"+
@@ -745,5 +745,5 @@ var xmlFile =
         "</account>"+
     "</route>"+
 "</Routes>"+
-"</root>";
+"</root>";*/
 

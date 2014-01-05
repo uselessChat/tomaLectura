@@ -108,3 +108,56 @@ var fileApi = {
 		alert("Response = " + r.response);
 		alert("Sent = " + r.bytesSent);
 	};
+	
+		// Function the chain functions to get the file to read
+	var readFile = function(){
+		alert("Get File Entry");
+		fileApi.fileSystem.root.getFile(fileApi.fileName,null,readFileEntryOnSuccess,readFileEntryOnError); //null : dont alloy the creation of the file if doesnt exist
+		//fileSystem.root.getFile("readme.txt", {create : true}, gotFileEntry, fail);
+	};
+	
+	var readFileEntryOnSuccess = function(fileEntry){
+		alert("File entry");
+		fileEntry.file(fileOnSuccess, fileOnError);
+	};
+	var readFileEntryOnError = function(error){
+		alert("Error in File Entry\n"+
+			"Code: "+error.code+"\n"+
+			"Description: "+fileErrorCodes[error.code]);
+	};
+	var fileOnSuccess = function(file){
+		alert('File');
+		readAsText(file);
+	};
+
+	var readAsText = function(file) {
+		alert('Read as text');
+		var reader = new FileReader();
+		reader.onload = function() {    // Define an event handler
+			xmlFile = reader.result;
+			alert(xmlFile);
+			/*var text = reader.result;   // This is the file contents
+			var out = document.getElementById("output");    // Find output element
+			out.innerHTML = "";                             // Clear it
+			out.appendChild(document.createTextNode(text)); // Display file contents
+				/*var outXml = document.getElementById("outputXml");
+				outXml.innerHTML = "";
+				
+				var xmlDoc = $.parseXML( text ),
+				$xml = $( xmlDoc );
+				$element = $xml.find( "description" );
+				outXml.appendChild(document.createTextNode($element.text())); // Display file contents*/
+				
+			//parseXml($.parseXML( text ));
+		}
+		reader.onabort = fileApi.onabort;
+		reader.onloadStart = fileApi.onloadStart;
+		reader.onerror = fileApi.onerror;
+		reader.onloadend = fileApi.onloadend;
+		reader.readAsText(file);
+	};
+	var fileOnError = function(error){
+		alert("Error in file\n"+
+			"Code: "+error.code+"\n"+
+			"Description: "+fileErrorCodes[error.code]);
+	};
