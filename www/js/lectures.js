@@ -85,8 +85,9 @@ var fileApi = {
 
 		options.params = params;
 		options.chunkedMode = false;
-		//var fileApi.ft = new FileTransfer();
-		fileApi.ft.upload(fileURI, serverURIReceiver, fileUploadResult, fileTransferError, options,true);
+		
+		var fileTransfer = new FileTransfer();
+		fileTransfer.upload(fileURI, serverURIReceiver, fileUploadResult, fileTransferError, options,true);
 	}
 	
 	//Called when the download was complete
