@@ -1,11 +1,18 @@
 //var xml para desarrollo
 var xml = {
     get parse(){
-		if(!xmlFile.length > 0){
+		/*if(!xmlFile.length > 0){
 			readFile();
-		}
+		}*/
 		return $.parseXML(xmlFile);
 	}
+};
+
+var setXml = function(){
+	if(!xmlFile.length > 0){
+		readFile();
+	}
+	$.mobile.changePage($('#menu'));
 };
 
 var currentsId = {
