@@ -3,7 +3,7 @@ var fileApi = {
 		fileName : 'lectures.xml',		//File name by the user to be read/write
 		transferOptions : {
 			get fileURI(){return fileApi.fileSystem.root.fullPath;}, 
-			serverURI : encodeURI("http://192.168.1.76/"), //Server path to uploads file
+			serverURI : encodeURI("http://192.168.1.64/"), //Server path to uploads file
 			uploadReceiver : 'upload.php',
 			downloadDirectoryServer : 'lectures/'
 		},
@@ -67,6 +67,28 @@ var fileApi = {
 			//"file:///sdcard/image.jpg",fileDownloadComplete,fileTransferError   
 	}
 	
+	//Called to upload the updated xml
+	function uploadFile() {
+		var fileURI = fileApi.transferOptions.fileURI+'/'+fileApi.fileName;
+		var serverURIReceiver = fileApi.transferOptions.serverURI+fileApi.transferOptions.uploadReceiver;
+		
+		var options = new FileUploadOptions();
+		options.fileKey ="file";
+		options.fileName = fileURI.substr(fileURI.lastIndexOf('/')+1);
+		options.mimeType ="text/plain";
+		alert("fileURI: "+fileURI);
+		alert('Server uri receiver: '+serverURIReceiver);
+		alert("Filekey: "+options.fileKey+" FileName: "+options.fileName+" Mimetype: "+options.mimeType);
+		var params = {};
+		params.value1 = "test";
+		params.value2 = "param";
+
+		options.params = params;
+		options.chunkedMode = false;
+		//var fileApi.ft = new FileTransfer();
+		fileApi.ft.upload(fileURI, serverURIReceiver, fileUploadResult, fileTransferError, options,true);
+	}
+	
 	//Called when the download was complete
 	var fileDownloadComplete = function (entry) {
 		alert("download complete: " + entry.fullPath);
@@ -77,4 +99,11 @@ var fileApi = {
 		alert("An error has occurred: Code = " + error.code + 'Description: '+fileTransferErrorCodes[error.code]);
 		alert("upload error source " + error.source);
 		alert("upload error target " + error.target);
+	};
+	
+	//Called when the transfer was successfull
+	var fileUploadResult = function (r) {
+		alert("Code = " + r.responseCode);
+		alert("Response = " + r.response);
+		alert("Sent = " + r.bytesSent);
 	};
