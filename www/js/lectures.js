@@ -149,7 +149,7 @@ var fileApi = {
 				outXml.appendChild(document.createTextNode($element.text())); // Display file contents*/
 				
 			//parseXml($.parseXML( text ));
-		}
+		};
 		reader.onabort = fileApi.onabort;
 		reader.onloadStart = fileApi.onloadStart;
 		reader.onerror = fileApi.onerror;
@@ -158,6 +158,40 @@ var fileApi = {
 	};
 	var fileOnError = function(error){
 		alert("Error in file\n"+
+			"Code: "+error.code+"\n"+
+			"Description: "+fileErrorCodes[error.code]);
+	};
+	
+	var writeFile = function(){
+		alert("Get File Entry");
+		fileApi.fileSystem.root.getFile(fileApi.fileName,{create: true, exclusive: false},writeFileEntryOnSuccess,writeFileEntryOnError);
+		//fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+	};
+	var writeFileEntryOnSuccess = function(fileEntry){
+		alert('File Entry');
+		fileEntry.createWriter(createWriterOnSuccess, createWriterOnError);
+	};
+	var createWriterOnSuccess = function(writer){
+		writer.onwritestart = fileApi.onwritestart;
+		writer.onwrite = fileApi.onwrite;
+		writer.onwriteend  = fileApi.onwriteend;
+		writer.onabort = fileApi.onabort;
+		writer.onerror = fileApi.onerror;
+		if(fileApi.xml){
+			writer.write(fileApi.xml);
+		}else{ 
+			alert('The xml file has no changes, therefore is not going be updated');
+		}
+		
+	};
+	var createWriterOnError = function(){
+		alert("Error in Writer\n"+
+			"Code: "+error.code+"\n"+
+			"Description: "+fileErrorCodes[error.code]);
+	};
+
+	var writeFileEntryOnError = function(){
+		alert("Error in File Entry\n"+
 			"Code: "+error.code+"\n"+
 			"Description: "+fileErrorCodes[error.code]);
 	};
