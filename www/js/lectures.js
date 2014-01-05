@@ -1,4 +1,4 @@
-var fileApi = {
+/*var fileApi = {
 		ft : new FileTransfer(),
 		fileName : 'lectures.xml',		//File name by the user to be read/write
 		transferOptions : {
@@ -20,14 +20,14 @@ var fileApi = {
 		onwriteend : function(evt){alert('Operation complete ')},											//Write
 		set xml(x){this.x = x;},
 		get xml(){return this.x}
-	};
+	};*/
 	
     function onDeviceReady() {
         pictureSource	= navigator.camera.PictureSourceType;
 		if(pictureSource)alert("Carga de pictureSource");
         destinationType	= navigator.camera.DestinationType;
 		if(destinationType)("Carga de destinationType ");
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
+		//window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
     }
 	
 	// Called when the file system is successfully retrieved
