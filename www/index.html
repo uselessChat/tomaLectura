@@ -43,7 +43,7 @@
                 <ul data-role="listview" ><!--data-inset="true"-->
                     <li><a href="#aplications">Aplicaciones</a></li>
                     <li><a href="#options">Opciones</a></li>
-					<li><a onclick="javascript:downloadFile();" href="#">Descargar archivo</a></li>
+					<li><a href="javascript:downloadFile();">Descargar archivo</a></li>
                 </ul>
             </div>
             <div data-role="footer" data-position="fixed">
@@ -58,7 +58,7 @@
             </div>
             <div data-role="content">
                 <ul data-role="listview" ><!--data-inset="true"-->
-                    <li><a onclick="javascript:loadRoutes();" href="#">Toma de Lecturas</a></li>
+                    <li><a  href="javascript:loadRoutes();">Toma de Lecturas</a></li>
                 </ul>
             </div>
             <div data-role="footer" data-position="fixed" class="ui-bar">
@@ -384,6 +384,7 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
             app.initialize();
+			document.addEventListener("deviceready", onDeviceReady, false);
         </script>
     </body>
 </html>

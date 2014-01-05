@@ -22,15 +22,11 @@ var fileApi = {
 		get xml(){return this.x}
 	};
 	
-	// Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready",onDeviceReady,false);
-	
-	// Sevice APIs are available
-    //
     function onDeviceReady() {
         pictureSource	= navigator.camera.PictureSourceType;
+		if(pictureSource)alert("Carga de pictureSource");
         destinationType	= navigator.camera.DestinationType;
+		if(destinationType)("Carga de destinationType ");
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
     }
 	
@@ -48,6 +44,20 @@ var fileApi = {
 	
 	//Called to download the file that contain the information required by the user
 	function downloadFile(){
+		var fileTransfer = new FileTransfer();
+
+			fileTransfer.download(
+				"http://192.168.1.76/lectures/lectures.xml",
+				"file:///sdcard/lectures.xml",
+				function(entry) {
+				alert("download complete: " + entry.fullPath);
+				},
+				function(error) {
+					alert("download error source " + error.source);
+					alert("download error target " + error.target);
+					alert("upload error code" + error.code);
+				}    
+			);
 		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
 			fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
 		//fileApi.ft.download(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
