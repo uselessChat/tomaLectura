@@ -29,6 +29,18 @@ var fileApi = {
 		if(destinationType)("Carga de destinationType ");
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
     }*/
+	function onDeviceReady() {
+				if(navigator.geolocation){
+					alert("Si esta soportado navigator.geolocation");
+				}
+				//navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError,{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+				pictureSource	= navigator.camera.PictureSourceType;
+				if(pictureSource)alert("Carga de pictureSource");else alert("No esta cargado pictureSource");
+				destinationType	= navigator.camera.DestinationType;
+				if(destinationType)("Carga de destinationType ");else alert("No esta cargado destinationType");
+				window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
+				//$.mobile.changePage($('#menu'));
+			}
 	
 	// Called when the file system is successfully retrieved
 	var requestFileSystemOnSuccess = function(fileSystem){

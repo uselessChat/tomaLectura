@@ -243,6 +243,11 @@
 			//"file:///sdcard/image.jpg",fileDownloadComplete,fileTransferError   
 	}
 	
+	//Called when the download was complete
+	var fileTransferError = function (entry) {
+		alert("download complete: " + entry.fullPath);
+	};
+	
 	//Called when tha transfer was a failure
 	var fileTransferError = function (error) {
 		alert("An error has occurred: Code = " + error.code + 'Description: '+fileTransferErrorCodes[error.code]);

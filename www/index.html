@@ -25,18 +25,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 		<script type="text/javascript">
 			//document.addEventListener("deviceready", onDeviceReady, false);
-			function onDeviceReady() {
-				if(navigator.geolocation){
-					alert("Si esta soportado navigator.geolocation");
-				}
-				//navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError,{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
-				pictureSource	= navigator.camera.PictureSourceType;
-				if(pictureSource)alert("Carga de pictureSource");else(alert("No esta cargado pictureSource");)
-				destinationType	= navigator.camera.DestinationType;
-				if(destinationType)("Carga de destinationType ");else(alert("No esta cargado destinationType");)
-				window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
-				//$.mobile.changePage($('#menu'));
-			}
+			
         </script>
         <title>Toma de Lecturas</title>
         <link rel="stylesheet"  href="jquery/jquery.mobile-1.3.2.css">
@@ -55,7 +44,7 @@
             </div>
             <div data-role="content">
                 <ul data-role="listview" ><!--data-inset="true"-->
-                    <li><a href="javascript:alert('test alert');">Entrar</a></li>
+                    <li><a href="javascript:onDeviceReady();">Entrar</a></li>
                 </ul>
             </div>
             <div data-role="footer" data-position="fixed">
