@@ -1,5 +1,5 @@
 var fileApi = {
-		ft : new FileTransfer(),
+		//ft : new FileTransfer(),
 		fileName : 'lectures.xml',		//File name by the user to be read/write
 		transferOptions : {
 			get fileURI(){return fileApi.fileSystem.root.fullPath;}, 
