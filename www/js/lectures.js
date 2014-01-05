@@ -178,7 +178,8 @@ var fileApi = {
 		writer.onabort = fileApi.onabort;
 		writer.onerror = fileApi.onerror;
 		if(fileApi.xml){
-			writer.write(fileApi.xml);
+			//writer.write(fileApi.xml);
+			writer.write(xmlFile);
 		}else{ 
 			alert('The xml file has no changes, therefore is not going be updated');
 		}

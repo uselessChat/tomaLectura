@@ -1,21 +1,11 @@
-//Recuerda agregar
-// <body onload="onBodyLoad()"> 
-function takePicture(){
-	alert($('#origenImagen').val()-1);
-}
-var pictureSourceType = {
-    PHOTOLIBRARY : 0,
-    CAMERA : 1,
-    SAVEDPHOTOALBUM : 2
-};
-
-function fotoLibrary(){return pictureSourceType.PHOTOLIBRARY;}
-function albumSaves(){return pictureSourceType.SAVEDPHOTOALBUM;}
-function camera(){return pictureSourceType.CAMERA;}
-
 //var xml para desarrollo
 var xml = {
-    get parse(){return $.parseXML(xmlFile);}
+    get parse(){
+		if(!xmlFile.length > 0){
+			readFile();
+		}
+		return $.parseXML(xmlFile);
+	}
 };
 
 var currentsId = {
