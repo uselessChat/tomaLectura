@@ -46,9 +46,9 @@ var fileApi = {
 	
 	//Called to download the file that contain the information required by the user
 	function downloadFile(){
-		/*var fileTransfer = new FileTransfer();
+		var fileTransfer = new FileTransfer();
 
-			fileTransfer.download(
+		/*	fileTransfer.download(
 				"http://192.168.1.64/lectures/lectures.xml",
 				"file:///sdcard/lectures.xml",
 				function(entry) {
@@ -62,8 +62,8 @@ var fileApi = {
 			);*/
 		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileApi.fileName);
 			alert(fileApi.transferOptions.fileURI+'/'+fileApi.fileName);//,fileDownloadComplete,fileTransferError );
-		//fileApi.ft.download(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
-			//fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
+		fileTransfer.download(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
+			fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
 			//"file:///sdcard/image.jpg",fileDownloadComplete,fileTransferError   
 	}
 	
