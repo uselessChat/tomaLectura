@@ -1,8 +1,8 @@
 var fileApi = {
-		ft : new FileTransfer(),
+		//ft : new FileTransfer(),
 		fileName : 'lectures.xml',		//File name by the user to be read/write
 		transferOptions : {
-			get fileURI(){return this.fs.root.fullPath;}, 
+			//get fileURI(){return this.fs.root.fullPath;}, 
 			serverURI : encodeURI("http://192.168.1.76/"), //Server path to uploads file
 			uploadReceiver : 'upload.php',
 			downloadDirectoryServer : 'lectures/'
@@ -58,8 +58,8 @@ var fileApi = {
 					alert("upload error code" + error.code);
 				}    
 			);*/
-		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName);
-			alert(fileApi.transferOptions.fileURI+'/'+fileApi.fileName);//,fileDownloadComplete,fileTransferError );
+		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileApi.fileName);
+			//alert(fileApi.transferOptions.fileURI+'/'+fileApi.fileName);//,fileDownloadComplete,fileTransferError );
 		//fileApi.ft.download(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
 			//fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
 			//"file:///sdcard/image.jpg",fileDownloadComplete,fileTransferError   
