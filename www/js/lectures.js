@@ -1,4 +1,4 @@
-/*var fileApi = {
+var fileApi = {
 		ft : new FileTransfer(),
 		fileName : 'lectures.xml',		//File name by the user to be read/write
 		transferOptions : {
@@ -20,7 +20,7 @@
 		onwriteend : function(evt){alert('Operation complete ')},											//Write
 		set xml(x){this.x = x;},
 		get xml(){return this.x}
-	};*/
+	};
 	
     function onDeviceReady() {
         pictureSource	= navigator.camera.PictureSourceType;
@@ -44,7 +44,7 @@
 	
 	//Called to download the file that contain the information required by the user
 	function downloadFile(){
-		var fileTransfer = new FileTransfer();
+		/*var fileTransfer = new FileTransfer();
 
 			fileTransfer.download(
 				"http://192.168.1.64/lectures/lectures.xml",
@@ -57,7 +57,7 @@
 					alert("download error target " + error.target);
 					alert("upload error code" + error.code);
 				}    
-			);
+			);*/
 		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
 			fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
 		//fileApi.ft.download(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileName,
