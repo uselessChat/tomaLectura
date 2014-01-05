@@ -12,7 +12,7 @@ var setXml = function(){
 	if(!xmlFile.length > 0){
 		readFile();
 	}
-	$.mobile.changePage($('#menu'));
+	//$.mobile.changePage($('#menu'));
 };
 
 var currentsId = {
