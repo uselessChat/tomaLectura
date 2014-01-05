@@ -47,7 +47,7 @@
 		var fileTransfer = new FileTransfer();
 
 			fileTransfer.download(
-				"http://192.168.1.76/lectures/lectures.xml",
+				"http://192.168.1.64/lectures/lectures.xml",
 				"file:///sdcard/lectures.xml",
 				function(entry) {
 				alert("download complete: " + entry.fullPath);
