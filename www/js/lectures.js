@@ -27,13 +27,14 @@ var fileApi = {
 		if(pictureSource)alert("Carga de pictureSource");
         destinationType	= navigator.camera.DestinationType;
 		if(destinationType)("Carga de destinationType ");
-		//window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
     }
 	
 	// Called when the file system is successfully retrieved
 	var requestFileSystemOnSuccess = function(fileSystem){
 		alert("Get and Set File System");
 		fileApi.fileSystem = fileSystem;
+		alert("Fullpath : "+fileApi.fileSystem.root.fullPath);
 	};
 	// Called when a failure is present when retrieving the file system
 	var requestFileSystemOnError = function(error){
