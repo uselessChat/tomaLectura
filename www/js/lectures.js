@@ -249,9 +249,12 @@ var fileApi = {
 		//var smallImage = document.getElementById('smallImage');
 		alert('Camera id: '+cameraImage.id);
 		//var imageElement = $(cameraImage.id);
-		var imageElement = document.getElementById(cameraImage.id);
+		var imageElement = document.getElementById('viewImage');
 		// Unhide image elements
 		//
+		if(imageElement){
+			alert('Si existe imageElement')
+		}
 		imageElement.style.display = 'block';
 		// Show the captured photo
 		// The in-line CSS rules are used to resize the image
@@ -260,7 +263,7 @@ var fileApi = {
 		
 		// Set the value to the global identifier
 		//
-		alert('imageData');
+		alert('imageData '+imageData);
 		cameraImage.baseCode64 = imageData;
     }
 
@@ -275,9 +278,12 @@ var fileApi = {
 		//var largeImage = document.getElementById('largeImage');
 		alert('Camera id: '+cameraImage.id);
 		//var imageElement = $(cameraImage.id);
-		var imageElement = document.getElementById(cameraImage.id);
+		var imageElement = document.getElementById('viewImage');
 		// Unhide image elements
 		//
+		if(imageElement){
+			alert('Si existe imageElement')
+		}
 		imageElement.style.display = 'block';
 		
 		// Show the captured photo
