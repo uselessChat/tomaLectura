@@ -1,3 +1,19 @@
+// Save the baseCode64 bits from the image and the local storage uri
+	var cameraImage = {
+		set baseCode64(bc){this.bc = bc;},	//image BaseCode64 value
+		set uri(u){this.u = u;},			//image local uri storage
+		get baseCode64(){return this.bc;},
+		get uri(){return this.u;},
+		id : '#viewImage'					//Element in index.html to render the image
+	};
+
+//Android 2.x emulators do not return a geolocation result unless the enableHighAccuracy option is set to true
+	var geolocationOptions = {
+		enableHighAccuracy: true,	//Provides a hint that the application needs the best possible results.
+		maximumAge:			3000,	// Accept a cached position whose age is no greater than the specified time in milliseconds.
+		timeout:			10000	//The maximum length of time (milliseconds) that is allowed to pass from the call to geolocation.getCurrentPosition or geolocation.watchPosition until the corresponding geolocationSuccess callback executes
+	};
+
 var fileApi = {
 		//ft : new FileTransfer(),
 		fileName : 'lectures.xml',		//File name by the user to be read/write
@@ -22,14 +38,6 @@ var fileApi = {
 		get xml(){return this.x;}
 	};
 	
-    /*function onDeviceReady() {
-        pictureSource	= navigator.camera.PictureSourceType;
-		if(pictureSource)alert("Carga de pictureSource");
-        destinationType	= navigator.camera.DestinationType;
-		if(destinationType)("Carga de destinationType ");
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, fileApi.storage.size, requestFileSystemOnSuccess, requestFileSystemOnError);
-    }*/
-	
 	
 	// Called when the file system is successfully retrieved
 	var requestFileSystemOnSuccess = function(fileSystem){
@@ -48,23 +56,10 @@ var fileApi = {
 	function downloadFile(){
 		var fileTransfer = new FileTransfer();
 
-		/*	fileTransfer.download(
-				"http://192.168.1.64/lectures/lectures.xml",
-				"file:///sdcard/lectures.xml",
-				function(entry) {
-				alert("download complete: " + entry.fullPath);
-				},
-				function(error) {
-					alert("download error source " + error.source);
-					alert("download error target " + error.target);
-					alert("upload error code" + error.code);
-				}    
-			);*/
 		alert(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileApi.fileName);
 			alert(fileApi.transferOptions.fileURI+'/'+fileApi.fileName);//,fileDownloadComplete,fileTransferError );
 		fileTransfer.download(fileApi.transferOptions.serverURI + fileApi.transferOptions.downloadDirectoryServer + fileApi.fileName,
 			fileApi.transferOptions.fileURI+'/'+fileApi.fileName,fileDownloadComplete,fileTransferError );
-			//"file:///sdcard/image.jpg",fileDownloadComplete,fileTransferError   
 	}
 	
 	//Called to upload the updated xml
@@ -196,3 +191,112 @@ var fileApi = {
 			"Code: "+error.code+"\n"+
 			"Description: "+fileErrorCodes[error.code]);
 	};
+	
+	var checkConnection = function(){
+		if(navigator.onLine){return true;}
+		return false;
+	};
+	
+	// Get the current geolocation point
+	function getGeolocation(){
+		navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError,geolocationOptions);
+	}
+	// Called when the point is successfully retrieved
+	function geoLocationSuccess(position){
+		// Elements to be updated in the index.html
+		$('#'+newimageTagDom.newlatitude).val(position.coords.latitude);
+		$('#'+newimageTagDom.longitude).val(position.coords.longitude);
+		$('#'+newimageTagDom.newdate).val(position.timestamp);
+		alert('Latitud: '+position.coords.latitude);
+		alert('Longitud: '+position.coords.longitude);
+		alert('Fecha: '+position.coords.longitude);
+	}
+	// Called when a failure is present
+	function geoLocationError(error) {
+		alert('Se ha producido un error\n'+
+			'Code: '    + error.code    + '\n' +
+			'Message: ' + error.message + '\n');
+	}
+	
+	// Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+		// Uncomment to view the base64-encoded image data
+		// console.log(imageData);
+
+		// Get image handle
+		//
+		//var smallImage = document.getElementById('smallImage');
+		var imageElement = $(cameraImage.id);
+		
+		// Unhide image elements
+		//
+		imageElement.style.display = 'block';
+		// Show the captured photo
+		// The in-line CSS rules are used to resize the image
+		//<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+		imageElement.src = "data:image/jpeg;base64," + imageData;
+		
+		// Set the value to the global identifier
+		//
+		cameraImage.baseCode64 = imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+		// Uncomment to view the image file URI
+		// console.log(imageURI);
+
+		// Get image handle
+		//
+		//var largeImage = document.getElementById('largeImage');
+		var imageElement = $(cameraImage.id);
+		// Unhide image elements
+		//
+		imageElement.style.display = 'block';
+		
+		// Show the captured photo
+		// The in-line CSS rules are used to resize the image
+		//
+		imageElement.src = imageURI;
+
+		// Set the value to the global identifier
+		//
+		cameraImage.uri = imageURI;	  
+    }
+
+    // Capture the photo
+    //
+    function capturePhoto(source) {
+		// Take picture using device camera and retrieve image as base64-encoded string
+		imageOptions.destinationType	= destinationType.DATA_URL;
+		imageOptions.sourceType			= source;
+		
+		navigator.camera.getPicture(onPhotoDataSuccess, onPhotoDataError,imageOptions);
+    }
+
+    // Get a photo from the device
+    //
+    function getPhoto(source) {
+		// Retrieve image file location from specified source
+		imageOptions.destinationType	= destinationType.FILE_URI;
+		imageOptions.sourceType			= source;
+		
+		navigator.camera.getPicture(onPhotoURISuccess, onPhotoDataError,imageOptions);
+    }
+
+    // Called if something bad happens.
+    //
+    function onPhotoDataError(message) {
+		alert('Se ha producido un error, causa: ' + message);
+    }
+	
+	function takePicture(){
+		var e = $('#origenImagen').val();
+		if(e == 2){
+			capturePhoto(e);
+		}else{
+			getPhoto(e);
+		}
+	}
