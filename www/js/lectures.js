@@ -248,8 +248,8 @@ var fileApi = {
 		//
 		//var smallImage = document.getElementById('smallImage');
 		alert('Camera id: '+cameraImage.id);
-		var imageElement = $(cameraImage.id);
-		
+		//var imageElement = $(cameraImage.id);
+		var imageElement = document.getElementById(cameraImage.id);
 		// Unhide image elements
 		//
 		imageElement.style.display = 'block';
@@ -274,7 +274,8 @@ var fileApi = {
 		//
 		//var largeImage = document.getElementById('largeImage');
 		alert('Camera id: '+cameraImage.id);
-		var imageElement = $(cameraImage.id);
+		//var imageElement = $(cameraImage.id);
+		var imageElement = document.getElementById(cameraImage.id);
 		// Unhide image elements
 		//
 		imageElement.style.display = 'block';
@@ -286,6 +287,7 @@ var fileApi = {
 
 		// Set the value to the global identifier
 		//
+		alert('Image URI: '+imageURI);
 		cameraImage.uri = imageURI;	  
     }
 
