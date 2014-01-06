@@ -224,6 +224,7 @@ var fileApi = {
 	// Called when the point is successfully retrieved
 	function geoLocationSuccess(position){
 		// Elements to be updated in the index.html
+		alert('LatitudID: '+newimageTagDom.newlatitude+' LongitudID: '+newimageTagDom.longitude+' Fecha: '+newimageTagDom.newdate);
 		$('#'+newimageTagDom.newlatitude).val(position.coords.latitude);
 		$('#'+newimageTagDom.longitude).val(position.coords.longitude);
 		$('#'+newimageTagDom.newdate).val(position.timestamp);
@@ -253,7 +254,7 @@ var fileApi = {
 		// Unhide image elements
 		//
 		if(imageElement){
-			alert('Si existe imageElement')
+			alert('Si existe imageElement');
 		}
 		imageElement.style.display = 'block';
 		// Show the captured photo
@@ -282,7 +283,7 @@ var fileApi = {
 		// Unhide image elements
 		//
 		if(imageElement){
-			alert('Si existe imageElement')
+			alert('Si existe imageElement');
 		}
 		imageElement.style.display = 'block';
 		
@@ -334,6 +335,7 @@ var fileApi = {
 		}else{
 			getPhoto(e);
 		}
+		getGeolocation();
 	}
 	
 	// Error codes that can be present when transferring  a file
