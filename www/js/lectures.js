@@ -293,6 +293,7 @@ var fileApi = {
     }
 	
 	function takePicture(){
+		alert($('#origenImagen').val());
 		var e = $('#origenImagen').val();
 		if(e == 2){
 			capturePhoto(e);
