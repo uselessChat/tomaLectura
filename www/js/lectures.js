@@ -1,3 +1,19 @@
+// navigator.camera.getPicture options
+	var imageOptions = {
+		quality			: 50,		//Quality of the saved image, range of 0 - 100
+		allowEdit		: false,	//Allow simple editing of image before selection
+		encodingType	: 0,		//Return JPEG encoded image
+		targetWidth		: 100,		//Width in pixels to scale image
+		targetHeigth	: 100,		//Height in pixels to scale image
+		mediaType		: 0,		//Allow selection of still pictures only.
+		correctOrientation	: true,	//Rotate the image to correct for the orientation of the device during capture
+		saveToPhotoAlbum	: true,	//Save the image to the photo album on the device after capture.
+		//popoverOptions			//iOS-only options that specify popover location in iPad
+		//cameraDirection			//Choose the camera to use (front- or back-facing)
+		destinationType : -1,		//Format of the return value
+		sourceType		: -1		//Source of the picture
+	};
+
 // Save the baseCode64 bits from the image and the local storage uri
 	var cameraImage = {
 		set baseCode64(bc){this.bc = bc;},	//image BaseCode64 value
