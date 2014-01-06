@@ -27,7 +27,7 @@
 	var geolocationOptions = {
 		enableHighAccuracy: true,	//Provides a hint that the application needs the best possible results.
 		maximumAge:			3000,	// Accept a cached position whose age is no greater than the specified time in milliseconds.
-		timeout:			10000	//The maximum length of time (milliseconds) that is allowed to pass from the call to geolocation.getCurrentPosition or geolocation.watchPosition until the corresponding geolocationSuccess callback executes
+		timeout:			15000	//The maximum length of time (milliseconds) that is allowed to pass from the call to geolocation.getCurrentPosition or geolocation.watchPosition until the corresponding geolocationSuccess callback executes
 	};
 
 var fileApi = {
@@ -224,9 +224,9 @@ var fileApi = {
 	// Called when the point is successfully retrieved
 	function geoLocationSuccess(position){
 		// Elements to be updated in the index.html
-		alert('LatitudID: '+newimageTagDom.newlatitude+' LongitudID: '+newimageTagDom.longitude+' Fecha: '+newimageTagDom.newdate);
+		alert('LatitudID: '+newimageTagDom.newlatitude+' LongitudID: '+newimageTagDom.newlongitude+' Fecha: '+newimageTagDom.newdate);
 		$('#'+newimageTagDom.newlatitude).val(position.coords.latitude);
-		$('#'+newimageTagDom.longitude).val(position.coords.longitude);
+		$('#'+newimageTagDom.newlongitude).val(position.coords.longitude);
 		$('#'+newimageTagDom.newdate).val(position.timestamp);
 		alert('Latitud: '+position.coords.latitude);
 		alert('Longitud: '+position.coords.longitude);

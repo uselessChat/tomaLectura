@@ -25,6 +25,17 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 		<script type="text/javascript">
 			document.addEventListener("deviceready", onDeviceReady, false);
+			document.addEventListener("online", onOnline, false);
+			document.addEventListener("offline", onOffline, false);
+
+			function onOnline() {
+				// Handle the online event
+				alert('Se encuentra en red con salida a internet');
+			}
+			function onOffline() {
+				// Handle the offline event
+				alert('Se encuentra fuera de red con salida a internet');
+			}
 			function onDeviceReady() {
 				if(navigator.geolocation){
 					alert("Si esta soportado navigator.geolocation");
