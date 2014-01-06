@@ -243,6 +243,7 @@ var fileApi = {
 		// Get image handle
 		//
 		//var smallImage = document.getElementById('smallImage');
+		alert('Camera id: '+cameraImage.id);
 		var imageElement = $(cameraImage.id);
 		
 		// Unhide image elements
@@ -267,6 +268,7 @@ var fileApi = {
 		// Get image handle
 		//
 		//var largeImage = document.getElementById('largeImage');
+		alert('Camera id: '+cameraImage.id);
 		var imageElement = $(cameraImage.id);
 		// Unhide image elements
 		//
@@ -296,6 +298,9 @@ var fileApi = {
     //
     function getPhoto(source) {
 		// Retrieve image file location from specified source
+		alert('Destination type: '+destinationType.FILE_URI);
+		alert('Source type: '+source);
+		
 		imageOptions.destinationType	= destinationType.FILE_URI;
 		imageOptions.sourceType			= source;
 		
@@ -309,11 +314,33 @@ var fileApi = {
     }
 	
 	function takePicture(){
-		alert($('#origenImagen').val());
-		var e = $('#origenImagen').val();
-		if(e == 2){
+		alert($('#origenImagen').val()-1);
+		var e = $('#origenImagen').val()-1;
+		if(e == 1){
 			capturePhoto(e);
 		}else{
 			getPhoto(e);
 		}
 	}
+	
+	// Error codes that can be present when transferring  a file
+	var fileTransferErrorCodes = {};
+		fileTransferErrorCodes[FileTransferError.FILE_NOT_FOUND_ERR] = 'FILE_NOT_FOUND_ERR';
+		fileTransferErrorCodes[FileTransferError.INVALID_URL_ERR] = 'INVALID_URL_ERR';
+		fileTransferErrorCodes[FileTransferError.CONNECTION_ERR] = 'CONNECTION_ERR';
+		fileTransferErrorCodes[FileTransferError.ABORT_ERR] = 'ABORT_ERR';
+		
+	// Error codes that can be present when reading/writing a file
+	var fileErrorCodes = {};
+		fileErrorCodes[FileError.NOT_FOUND_ERR] = 'NOT_FOUND_ERR';
+		fileErrorCodes[FileError.SECURITY_ERR] = 'SECURITY_ERR';
+		fileErrorCodes[FileError.ABORT_ERR] = 'ABORT_ERR';
+		fileErrorCodes[FileError.NOT_READABLE_ERR] = 'NOT_READABLE_ERR';
+		fileErrorCodes[FileError.ENCODING_ERR] = 'ENCODING_ERR';
+		fileErrorCodes[FileError.NO_MODIFICATION_ALLOWED_ERR] = 'NO_MODIFICATION_ALLOWED_ERR';
+		fileErrorCodes[FileError.INVALID_STATE_ERR] = 'INVALID_STATE_ERR';
+		fileErrorCodes[FileError.SYNTAX_ERR] = 'SYNTAX_ERR';
+		fileErrorCodes[FileError.INVALID_MODIFICATION_ERR] = 'INVALID_MODIFICATION_ERR';
+		fileErrorCodes[FileError.QUOTA_EXCEEDED_ERR] = 'QUOTA_EXCEEDED_ERR';
+		fileErrorCodes[FileError.TYPE_MISMATCH_ERR] = 'TYPE_MISMATCH_ERR';
+		fileErrorCodes[FileError.PATH_EXISTS_ERR] = 'PATH_EXISTS_ERR';
