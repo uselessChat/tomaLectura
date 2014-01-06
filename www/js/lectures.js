@@ -209,7 +209,11 @@ var fileApi = {
 	};
 	
 	var checkConnection = function(){
-		if(navigator.onLine){return true;}
+		if(navigator.onLine){
+			alert('true');
+			return true;
+		}
+		alert('false');
 		return false;
 	};
 	
@@ -256,6 +260,7 @@ var fileApi = {
 		
 		// Set the value to the global identifier
 		//
+		alert('imageData');
 		cameraImage.baseCode64 = imageData;
     }
 
